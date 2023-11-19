@@ -1,26 +1,11 @@
-## Running Tests
+## Starting application
 ```bash
-npm test
+npm run start:docker
 ```
 
-## Starting database
+## Stopping application
 ```bash
-npm run start:db
-```
-
-## Stopping database
-```bash
-npm run stop:db
-```
-
-## Running migrations
-```bash
-npm run migration:run
-```
-
-## Starting Express
-```bash
-npm start
+npm run stop:docker
 ```
 
 ## Accessing swagger:
