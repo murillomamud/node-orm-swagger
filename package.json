@@ -4,9 +4,9 @@
   "description": "Nodejs App using sequelize",
   "main": "index.mjs",
   "exports": "./index.mjs",
-  "type": "module", 
+  "type": "module",
   "scripts": {
-    "test": "npm run test",
+    "test": "cross-env NODE_ENV=test vitest",
     "lint": "npx eslint . --ext .mjs",
     "lint:fix": "npx eslint . --ext .mjs --fix",
     "start:database": "docker-compose up -d",
@@ -19,9 +19,13 @@
   "devDependencies": {
     "eslint": "^8.54.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.29.0"
+    "eslint-plugin-import": "^2.29.0",
+    "pg-mem": "^1.8.6",
+    "sequelize-mock-v5": "^1.2.4",
+    "vitest": "^0.34.6"
   },
   "dependencies": {
+    "chance": "^1.1.11",
     "config": "^3.3.9",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
