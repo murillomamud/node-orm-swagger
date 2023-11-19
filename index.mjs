@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import homeRouter from './src/routes/home.mjs';
 import createProduct from './src/routes/postProduct.mjs';
-import listProducts from './src/routes/listProducts.mjs';
+import listAllProductsRoute from './src/routes/listProducts.mjs';
 import setupSwagger from './src/swaggerSetup.mjs';
 
 const logger = console;
@@ -16,7 +16,10 @@ app.use(express.json());
 
 app.get('/', homeRouter);
 app.post('/products', createProduct);
-app.get('/products', listProducts);
+
+const listProductsMiddleware = await listAllProductsRoute();
+
+app.get('/products', listProductsMiddleware);
 
 app.listen(PORT, () => {
   logger.log(`Server listening on port ${PORT}`);
