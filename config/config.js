@@ -7,10 +7,10 @@ export default {
     dialect: 'postgres',
   },
   test: {
-    username: 'postgres',
-    password: 'postgres',
-    database: 'postgres',
-    host: 'localhost',
+    username: 'postgres-test',
+    password: 'postgres-test',
+    database: 'postgres-test',
+    host: 'localhost-test',
     dialect: 'postgres',
   },
 };
