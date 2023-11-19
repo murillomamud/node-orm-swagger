@@ -1,0 +1,35 @@
+{
+  "name": "node-sequelize",
+  "version": "1.0.0",
+  "description": "Nodejs App using sequelize",
+  "main": "index.mjs",
+  "exports": "./index.mjs",
+  "type": "module", 
+  "scripts": {
+    "test": "npm run test",
+    "lint": "npx eslint . --ext .mjs",
+    "lint:fix": "npx eslint . --ext .mjs --fix",
+    "start:database": "docker-compose up -d",
+    "migration:create": "npx sequelize-cli migration:create --name",
+    "migration:run": "npx sequelize-cli db:migrate",
+    "start": "cross-env NODE_ENV=development node index.mjs"
+  },
+  "author": "Murillo Mamud",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0"
+  },
+  "dependencies": {
+    "config": "^3.3.9",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "sequelize": "^6.35.0",
+    "sequelize-cli": "^6.6.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  }
+}
