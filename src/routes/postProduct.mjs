@@ -1,4 +1,8 @@
-import Product from '../models/productModel.mjs';
+import createSequelizeInstance from '../db/sequelize.mjs';
+import createProductModel from '../models/productModel.mjs';
+
+const sequelize = createSequelizeInstance();
+const Product = createProductModel(sequelize);
 
 /**
  * @swagger
