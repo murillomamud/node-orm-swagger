@@ -1,6 +1,16 @@
+## Running Tests
+```bash
+npm test
+```
+
 ## Starting database
 ```bash
-npm run start:database
+npm run start:db
+```
+
+## Stopping database
+```bash
+npm run stop:db
 ```
 
 ## Running migrations
