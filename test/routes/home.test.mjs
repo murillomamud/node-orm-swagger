@@ -3,7 +3,7 @@ import request from 'supertest';
 import express from 'express';
 import homeRouter from '../../src/routes/home.mjs';
 
-test('homeRouter deve retornar Hello World!', async ({ is }) => {
+test('homeRouter deve retornar Hello World!', async () => {
   const app = express();
   app.get('/', homeRouter);
 
