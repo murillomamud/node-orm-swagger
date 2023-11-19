@@ -1,8 +1,7 @@
 import createSequelizeInstance from '../db/sequelize.mjs';
 import createProductModel from '../models/productModel.mjs';
 
-const sequelize = createSequelizeInstance();
-const Product = createProductModel(sequelize);
+const logger = console;
 
 /**
  * @swagger
@@ -41,20 +40,25 @@ const Product = createProductModel(sequelize);
  *       '500':
  *         description: Internal server error
  */
-export default async function createProduct(req, res) {
-  try {
-    const { productName, price } = req.body;
-    const newProduct = await Product.create({
-      productName,
-      price,
-    });
+export default async function createProductRoute() {
+  const sequelize = createSequelizeInstance();
+  const Product = createProductModel(sequelize);
+  return async function createProduct(req, res) {
+    try {
+      const { productName, price } = req.body;
+      const newProduct = await Product.create({
+        productName,
+        price,
+      });
 
-    res.status(201).json({ product: newProduct });
-  } catch (error) {
-    if (error.name === 'SequelizeValidationError') {
-      res.status(400).json({ error: 'Bad request' });
-    } else {
-      res.status(500).json({ error: 'Internal server error' });
+      res.status(201).json({ product: newProduct });
+    } catch (error) {
+      logger.error(error);
+      if (error.name === 'SequelizeValidationError') {
+        res.status(400).json({ error: 'Bad request' });
+      } else {
+        res.status(500).json({ error: 'Internal server error' });
+      }
     }
-  }
+  };
 }

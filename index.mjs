@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import homeRouter from './src/routes/home.mjs';
-import createProduct from './src/routes/postProduct.mjs';
+import createProductRoute from './src/routes/postProduct.mjs';
 import listAllProductsRoute from './src/routes/listProducts.mjs';
 import setupSwagger from './src/swaggerSetup.mjs';
 
@@ -15,10 +15,11 @@ setupSwagger(app);
 app.use(express.json());
 
 app.get('/', homeRouter);
-app.post('/products', createProduct);
 
+const createProductMiddleware = await createProductRoute();
 const listProductsMiddleware = await listAllProductsRoute();
 
+app.post('/products', createProductMiddleware);
 app.get('/products', listProductsMiddleware);
 
 app.listen(PORT, () => {

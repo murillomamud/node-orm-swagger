@@ -1,5 +1,6 @@
 import createSequelizeInstance from '../db/sequelize.mjs';
 import createProductModel from '../models/productModel.mjs';
+
 const logger = console;
 
 /**
