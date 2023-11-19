@@ -9,11 +9,10 @@
     "test": "cross-env NODE_ENV=test vitest",
     "lint": "npx eslint . --ext .mjs",
     "lint:fix": "npx eslint . --ext .mjs --fix",
-    "start:db": "docker-compose up --build",
-    "stop:db": "docker-compose down",
+    "start": "docker-compose up --build",
+    "stop": "docker-compose down",
     "migration:create": "npx sequelize-cli migration:create --name",
     "migration:run": "npx sequelize-cli db:migrate",
-    "start": "cross-env NODE_ENV=development node index.mjs"
   },
   "author": "Murillo Mamud",
   "license": "ISC",
