@@ -7,3 +7,17 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+
+  api:
+    build: .
+    command: /bin/sh -c "npm run migration:run && npm start"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: development
+
+networks:
+  api-products-network:
+    driver: bridge

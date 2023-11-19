@@ -3,7 +3,7 @@ export default {
     username: 'postgres',
     password: 'postgres',
     database: 'postgres',
-    host: 'localhost',
+    host: 'postgres',
     dialect: 'postgres',
   },
   test: {

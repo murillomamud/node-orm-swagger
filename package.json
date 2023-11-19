@@ -9,7 +9,7 @@
     "test": "cross-env NODE_ENV=test vitest",
     "lint": "npx eslint . --ext .mjs",
     "lint:fix": "npx eslint . --ext .mjs --fix",
-    "start:db": "docker-compose up -d",
+    "start:db": "docker-compose up --build",
     "stop:db": "docker-compose down",
     "migration:create": "npx sequelize-cli migration:create --name",
     "migration:run": "npx sequelize-cli db:migrate",
