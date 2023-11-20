@@ -43,7 +43,7 @@ jobs:
   terraform:
     runs-on: [ ubuntu-latest ]
     container:
-      image: hashicorp/terraform:latest
+      image: hashicorp/terraform:1.1.9
     # needs: [build-push-docker-image]
     environment:
       name: production
