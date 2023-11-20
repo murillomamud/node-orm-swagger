@@ -21,3 +21,7 @@ data "aws_caller_identity" "current" {}
 data "aws_vpc" "my_vpc" {
   id = "vpc-0e572975"
 }
+
+data "aws_subnet" "my_subnet" {
+  id = "subnet-d052bab7"
+}

@@ -1,7 +1,3 @@
-locals {
-  public_subnets_ids = ["subnet-d052bab7", "subnet-390e1116"]
-}
-
 resource "aws_ecs_cluster" "my_cluster" {
   name = "cluster-product-api"
 }
@@ -44,7 +40,7 @@ resource "aws_ecs_service" "my_service" {
   desired_count   = 1
 
   network_configuration {
-    subnets = local.public_subnets_ids
+    subnets = [aws_subnet.my_subnet.id]
     security_groups = [aws_security_group.allow_http.id]
   }
 
