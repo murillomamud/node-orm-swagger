@@ -45,6 +45,8 @@ jobs:
     container:
       image: hashicorp/terraform:latest
     # needs: [build-push-docker-image]
+    environment:
+      name: production
 
     steps:
       - name: Configure AWS credentials
