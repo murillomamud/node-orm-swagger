@@ -17,7 +17,7 @@ resource "aws_ecs_task_definition" "my_task_definition" {
   container_definitions = jsonencode([
     {
       name  = "container-product-api"
-      image = "381150242567.dkr.ecr.us-east-1.amazonaws.com/product-api:f918f21fe50de8b50a89dbe47d8e611ca9ec7e05"
+      image = "381150242567.dkr.ecr.us-east-1.amazonaws.com/product-api:${var.ecr_image_tag}"
       portMappings = [
         {
           containerPort = 80,
