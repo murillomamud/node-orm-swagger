@@ -23,5 +23,5 @@ data "aws_vpc" "my_vpc" {
 }
 
 data "aws_subnet" "my_subnet" {
-  id = "subnet-fbae2bb1"
+  id = ["subnet-fbae2bb1", "subnet-9dbf4ec1"]
 }
