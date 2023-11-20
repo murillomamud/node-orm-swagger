@@ -20,14 +20,15 @@ resource "aws_ecs_task_definition" "my_task_definition" {
           hostPort      = 3000,
         },
       ],
-      log_configuration = {
-        log_driver = "awslogs"
+      logConfiguration = {
+        logDriver = "awslogs"
         options = {
-          "awslogs-group" = "/ecs/product-api-logs"
-          "awslogs-region" = "us-east-1"
-          "awslogs-stream-prefix" = "ecs"
+          awslogs-group = "/ecs/product-api-logs"
+          awslogs-region = "us-east-1"
+          awslogs-stream-prefix = "ecs"
+          awslogs-create-group = "true"          
         }
-      },
+      },    
       awsvpcConfiguration = {
         subnets = [data.aws_subnet.my_subnet.id]
         securityGroups = [aws_security_group.allow_http.id]
