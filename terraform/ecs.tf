@@ -4,7 +4,7 @@ resource "aws_ecs_cluster" "my_cluster" {
 
 resource "aws_ecs_task_definition" "my_task_definition" {
   family                   = "task-product-api"
-  network_mode             = "awsvpc"
+  network_mode             = "bridge"
   requires_compatibilities = ["FARGATE"]
   cpu = 256
   memory = 512
