@@ -73,11 +73,12 @@ jobs:
         run: terraform validate
 
       - name: Terraform plan
-        working-directory: ./terraform      
-        run: terraform plan --out=tfplan
+        working-directory: ./terraform
+        run: terraform plan -out=tfplan -var="ecr_image_tag=${{ github.sha }}"
+
 
       - name: Terraform apply
         working-directory: ./terraform      
         run: |
-          terraform apply -var="ecr_image_tag=${{ github.sha }}" tfplan
+          terraform apply tfplan
 
