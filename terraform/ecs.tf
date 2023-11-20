@@ -27,7 +27,12 @@ resource "aws_ecs_task_definition" "my_task_definition" {
           "awslogs-region" = "us-east-1"
           "awslogs-stream-prefix" = "ecs"
         }
-      },      
+      },
+      awsvpcConfiguration = {
+        subnets = [data.aws_subnet.my_subnet.id]
+        securityGroups = [aws_security_group.allow_http.id]
+        assignPublicIp = "ENABLED"
+      }  
     },
   ])
 }
