@@ -10,6 +10,7 @@ resource "aws_iam_policy" "ecs_execution_policy" {
         Action    = [
           "ecr:*",
           "logs:*",
+          "ssm:*",
         ],
         Resource  = "*"
       }

@@ -47,10 +47,12 @@ resource "aws_ecs_service" "my_service" {
   network_configuration {
     subnets = [data.aws_subnet.my_subnet.id]
     security_groups = [aws_security_group.allow_http.id]
+    assign_public_ip = true
   }
 
   deployment_circuit_breaker {
     enable   = true
     rollback = false
-  }
+  }  
+
 }
