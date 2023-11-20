@@ -4,7 +4,7 @@ resource "aws_ecs_cluster" "my_cluster" {
 
 resource "aws_ecs_task_definition" "my_task_definition" {
   family                   = "task-product-api"
-  network_mode             = "bridge"
+  network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu = 256
   memory = 512
@@ -17,7 +17,7 @@ resource "aws_ecs_task_definition" "my_task_definition" {
       portMappings = [
         {
           containerPort = 3000,
-          hostPort      = 80,
+          hostPort      = 3000,
         },
       ],
       log_configuration = {
