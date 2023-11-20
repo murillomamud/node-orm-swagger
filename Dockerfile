@@ -13,4 +13,7 @@ COPY . .
 
 EXPOSE 3000
 
+# Install curl
+RUN apk add curl
+
 CMD [ "npm", "start" ]
