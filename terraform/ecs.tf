@@ -21,6 +21,7 @@ resource "aws_ecs_task_definition" "my_task_definition" {
           hostPort      = 80,
         },
       ],
+      cpu = 256,
       memory = 256,
     },
   ])
