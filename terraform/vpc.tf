@@ -5,7 +5,7 @@ resource "aws_vpc_endpoint" "ecr_api" {
 
   security_group_ids = [aws_security_group.allow_http.id]
 
-  subnet_ids = [aws_subnet.my_subnet.id]
+  subnet_ids = [data.aws_subnet.my_subnet.id]
 
   private_dns_enabled = true
 }
@@ -17,7 +17,7 @@ resource "aws_vpc_endpoint" "ecr_dkr" {
 
   security_group_ids = [aws_security_group.allow_http.id]
 
-  subnet_ids = [aws_subnet.my_subnet.id]
+  subnet_ids = [data.aws_subnet.my_subnet.id]
 
   private_dns_enabled = true
 }
