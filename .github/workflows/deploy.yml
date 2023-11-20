@@ -72,13 +72,16 @@ jobs:
         working-directory: ./terraform      
         run: terraform validate
 
-      - name: Terraform plan
-        working-directory: ./terraform
-        run: terraform plan -out=tfplan -var="ecr_image_tag=${{ github.sha }}"
+      # - name: Terraform plan
+      #   working-directory: ./terraform
+      #   run: terraform plan -out=tfplan -var="ecr_image_tag=${{ github.sha }}"
 
 
-      - name: Terraform apply
+      # - name: Terraform apply
+      #   working-directory: ./terraform      
+      #   run: |
+      #     terraform apply tfplan
+
+      - name: Terraform destroy
         working-directory: ./terraform      
-        run: |
-          terraform apply tfplan
-
+        run: terraform destroy -auto-approve
