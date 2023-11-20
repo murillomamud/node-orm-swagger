@@ -7,12 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    outputs:
-      env: {{ steps.branch_check.outputs.env_name }}
-      account: {{ steps.branch_check.outputs.account_id }}
-
 
   build-push-docker-image:
     runs-on: ubuntu-latest
