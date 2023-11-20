@@ -19,9 +19,9 @@ data "aws_region" "current" {}
 data "aws_caller_identity" "current" {}
 
 data "aws_vpc" "my_vpc" {
-  id = "vpc-0e572975"
+  id = "vpc-633f1e18"
 }
 
 data "aws_subnet" "my_subnet" {
-  id = "subnet-d052bab7"
+  id = "subnet-fbae2bb1"
 }
