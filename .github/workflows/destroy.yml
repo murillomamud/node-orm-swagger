@@ -1,0 +1,55 @@
+name: Destroy from aws
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  delete-images-from-ecr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Delete images from ECR
+        run: |
+          aws ecr batch-delete-image --region us-east-1 \
+            --repository-name product-api \
+            --image-ids "$(aws ecr list-images --region us-east-1 --repository-name product-api --query 'imageIds[*]' --output json)" || true
+
+  terraform:
+    runs-on: [ ubuntu-latest ]
+    container:
+      image: hashicorp/terraform:latest
+    needs: [delete-images-from-ecr]
+    environment:
+      name: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Terraform init
+        run: terraform init
+
+      - name: Terraform destroy
+        run: terraform destroy -auto-approve
+
