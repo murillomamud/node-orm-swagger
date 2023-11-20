@@ -29,7 +29,7 @@ resource "aws_ecs_service" "my_service" {
   desired_count   = 1
 
   network_configuration {
-    subnets = data.aws_subnet_ids.all_subnets.ids
+    subnets = [for s in data.aws_subnet.public_subnets : s.id]
     security_groups = [aws_security_group.allow_http.id]
   }
 }
