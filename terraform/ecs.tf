@@ -57,9 +57,17 @@ resource "aws_ecs_service" "my_service" {
     assign_public_ip = true
   }
 
+  load_balancer {
+    target_group_arn = aws_lb_target_group.my_target_group.arn
+    container_name   = "container-product-api"
+    container_port   = 3000
+  }
+
   deployment_circuit_breaker {
     enable   = true
     rollback = false
   }  
+
+  depends_on = [ aws_lb_listener.my_listener ]
 
 }
