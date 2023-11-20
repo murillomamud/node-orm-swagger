@@ -32,7 +32,14 @@ resource "aws_ecs_task_definition" "my_task_definition" {
         subnets = [data.aws_subnet.my_subnet.id]
         securityGroups = [aws_security_group.allow_http.id]
         assignPublicIp = "ENABLED"
-      }  
+      }
+      healthCheck = {
+        command = ["CMD-SHELL", "curl -f http://localhost:3000/ || exit 1"]
+        interval = 600
+        retries = 3
+        startPeriod = 120
+        timeout = 5
+      }
     },
   ])
 }
