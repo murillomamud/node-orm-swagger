@@ -21,11 +21,3 @@ data "aws_caller_identity" "current" {}
 data "aws_vpc" "my_vpc" {
   id = "vpc-0e572975"
 }
-
-data "aws_subnet" "public_subnets" {
-  vpc_id = data.aws_vpc.my_vpc.id
-  filter {
-    name   = "map-public-ip-on-launch"
-    values = ["true"]
-  }
-}
