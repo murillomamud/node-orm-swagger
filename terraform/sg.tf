@@ -2,7 +2,7 @@ resource "aws_security_group" "allow_http" {
   name        = "allow_http_sg"
   description = "Security Group to allow HTTP access"
 
-  vpc_id = "vpc-0e572975"
+  vpc_id = data.aws_vpc.my_vpc.id
 
   ingress {
     from_port   = 80
