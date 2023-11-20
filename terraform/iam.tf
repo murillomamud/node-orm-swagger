@@ -8,14 +8,10 @@ resource "aws_iam_policy" "ecs_execution_policy" {
       {
         Effect    = "Allow",
         Action    = [
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:BatchGetImage",
-          "ecr:BatchCheckLayerAvailability",
-          "logs:CreateLogGroup",
-          "logs:CreateLogStream",
-          "logs:PutLogEvents"
+          "ecr:*",
+          "logs:*",
         ],
-        Resource  = "*" // Você pode restringir os recursos específicos conforme necessário
+        Resource  = "*"
       }
     ],
   })
