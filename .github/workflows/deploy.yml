@@ -78,4 +78,6 @@ jobs:
 
       - name: Terraform apply
         working-directory: ./terraform      
-        run: terraform apply tfplan -var="ecr_image_tag=${{ github.sha }}"
+        run: |
+          terraform apply -var="ecr_image_tag=${{ github.sha }}" tfplan
+
