@@ -60,17 +60,22 @@ jobs:
           aws-region: us-east-1
 
       - name: Verify Terraform version
+        working-directory: ./terraform
         run: terraform --version
 
       - name: Terraform init
+        working-directory: ./terraform      
         run: | 
           terraform init -backend-config "bucket=terraform-state-murillo" 
 
       - name: Terraform validation
+        working-directory: ./terraform      
         run: terraform validate
 
       - name: Terraform plan
+        working-directory: ./terraform      
         run: terraform plan --out=tfplan
 
       - name: Terraform apply
+        working-directory: ./terraform      
         run: terraform apply tfplan
