@@ -11,6 +11,7 @@ resource "aws_lb_target_group" "my_target_group" {
   port     = 3000
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.my_vpc.id
+  target_type = "ip"  
 }
 
 
