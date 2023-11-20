@@ -47,4 +47,9 @@ resource "aws_ecs_service" "my_service" {
     subnets = local.public_subnets_ids
     security_groups = [aws_security_group.allow_http.id]
   }
+
+  deployment_circuit_breaker {
+    enable   = true
+    rollback = false
+  }
 }
