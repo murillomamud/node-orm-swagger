@@ -44,7 +44,7 @@ jobs:
     runs-on: [ ubuntu-latest ]
     container:
       image: hashicorp/terraform:latest
-    # needs: [build-push-docker-image]
+    needs: [build-push-docker-image]
     environment:
       name: production
 
