@@ -28,7 +28,7 @@ jobs:
       - name: create ECR repository if not exists
         id: create-ecr-repo
         run: |
-          aws ecr describe-repositories --repository-names product-api || aws ecr create-repository --repository-name product-api
+          aws ecr create-repository --repository-name product-api || true
 
       - name: Build, tag and push image to Amazon ECR
         env:
