@@ -16,7 +16,7 @@ resource "aws_ecs_task_definition" "my_task_definition" {
       image = "381150242567.dkr.ecr.us-east-1.amazonaws.com/product-api:${var.ecr_image_tag}"
       portMappings = [
         {
-          containerPort = 80,
+          containerPort = 3000,
           hostPort      = 80,
         },
       ],
